@@ -27,7 +27,7 @@
 			this.getMusicList()
 		},
 		methods:{
-			getMusicList(){
+			getMusicList(){ //请求热门歌曲数据
 				this.$http.jsonp('http://tingapi.ting.baidu.com/v1/restserver/ting?method=baidu.ting.billboard.billList&type=2&size=10&offset='+this.offset).then(result=>{
 					this.list=this.list.concat(result.body.song_list)
 				})

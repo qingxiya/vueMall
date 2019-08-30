@@ -23,7 +23,7 @@ export default{
 		this.getPlay()
 	},
 	methods:{
-		getPlay(){ //请求热门歌曲数据
+		getPlay(){ //按照歌曲Id请求歌曲信息
 			this.$http.jsonp('http://tingapi.ting.baidu.com/v1/restserver/ting?method=baidu.ting.song.play&songid='+this.song_id).then(res=>{
 				if(res.status===200){
 						this.playlist=res.body.bitrate
