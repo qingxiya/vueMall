@@ -2,11 +2,9 @@
 	<div class="container-div">
 		<!-- 顶部header -->
 		<mt-header fixed title="子元素商城">
-			  <a @click="$router.go(-1)" slot="left">
-			    <mt-button icon="back">返回</mt-button>
-			  </a>
+			<span @click="$router.go(-1)" slot="left" v-show="flag"><mt-button icon="back">返回</mt-button></span>
 		</mt-header>
-		
+
 		<!-- 中间main -->
 		<transition><router-view></router-view></transition>
 		<!-- 底部tabbar -->
@@ -35,12 +33,30 @@
 
 <script>
 export default {
-	methods:{
-		isReturn(){
-			this.$router.go=-1
+	data() {
+		return{
+			flag:false
+		}
+	},
+	created(){
+		this.flag=this.$route.path==="/home"?false:true
+	},
+	methods: {
+		isReturn() {
+			this.$router.go = -1;
+		}
+	},
+	watch:{
+		//显示和隐藏返回按钮
+		"$route.path":function(newval){
+			if(newval==="/home"){
+				this.flag=false
+			}else{
+				this.flag=true
+			}
 		}
 	}
-}
+};
 </script>
 
 <style lang="scss" scoped>
@@ -53,7 +69,7 @@ export default {
 	.mint-header {
 		z-index: 99;
 	}
-	.isResult{
+	.isResult {
 		z-index: 100;
 	}
 

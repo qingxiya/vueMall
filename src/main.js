@@ -42,8 +42,18 @@ Vue.component(Button.name, Button);
 Vue.use(Lazyload);
 import MintUI from 'mint-ui'
 import 'mint-ui/lib/style.css'
-
+import { Switch } from 'mint-ui';
+Vue.component(Switch.name, Switch);
 Vue.use(MintUI)
+import { Search } from 'mint-ui';
+Vue.component(Search.name, Search);
+
+// vant
+import { CouponCell, CouponList } from 'vant';
+Vue.use(CouponCell).use(CouponList);
+import { Popup } from 'vant';
+Vue.use(Popup);
+
 
 // 导入格式化插件
 import moment from 'moment'

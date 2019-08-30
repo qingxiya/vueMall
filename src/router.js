@@ -21,6 +21,12 @@ import ProductInfo from './components/product/productInfo.vue'
 import ImageText from './components/product/imageText.vue'
 //商品评论
 import ProductComment from './components/product/productComment.vue'
+// 优惠券
+import Coupon from './components/users/coupon.vue'
+// 音乐专区
+import Music from './components/music/music.vue'
+// 音乐播放
+import MusicPlay from './components/music/musicPlay.vue'
 
 
 // 3. 创建路由对象
@@ -42,7 +48,13 @@ var router = new VueRouter({
 	  {path:'/home/productList',component:ProductList},
 	  {path:'/home/productInfo/:id',component:ProductInfo,name:"productInfo"},
 	  {path:'/home/product/imageText/:id',component:ImageText,name:"imageText"},
-	  {path:'/home/product/productComment/:id',component:ProductComment,name:"productComment"}
+	  {path:'/home/product/productComment/:id',component:ProductComment,name:"productComment"},
+	  // 优惠券
+	  {path:'/member/users/coupon',component:Coupon},
+	  // 音乐专区
+	  {path:'/home/music',component:Music},
+	  // 音乐播放
+	  {path:'/home/musicPlay/:id',component:MusicPlay}
   ],
   // 设置点击图标高亮
   linkActiveClass:'mui-active'

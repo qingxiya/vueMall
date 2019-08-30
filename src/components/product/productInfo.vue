@@ -142,7 +142,6 @@ export default {
 		getSelectdCount(count) {
 			//获得用户选中商品数量
 			this.SelectdCount = count;
-			console.log('父组件拿到的' + this.SelectdCount);
 		}
 	},
 	components: {

@@ -9,7 +9,7 @@ var car = JSON.parse(localStorage.getItem('car') || '[]')
 
 const store = new Vuex.Store({
 	state: { //通过this.$store.state.***
-		car: car//在car数组中存储商品的对象 id,价格，数量，是否选中
+		car: car //在car数组中存储商品的对象 id,价格，数量，是否选中
 	},
 	mutations: { //通过this.$store.commit('方法名'，'按需传递唯一参数')
 		addToCar(state, productInfo) {
@@ -27,8 +27,36 @@ const store = new Vuex.Store({
 				state.car.push(productInfo)
 			}
 			// 更新car数组后将数据存储到localStorage中去
-			localStorage.setItem('car',JSON.stringify(state.car))
+			localStorage.setItem('car', JSON.stringify(state.car))
+		},
+		updateCar(state, productInfo) {
+			// 修改购物车数量
+			state.car.some(item => {
+				if (item.id == productInfo.id) {
+					item.count = parseInt(productInfo.count)
+					return true
+				}
+			})
+			localStorage.setItem('car', JSON.stringify(state.car))
+		},
+		del(state, id) { //删除
+			state.car.some((item, i) => {
+				if (item.id == id) {
+					state.car.splice(i, 1)
+					return true
+				}
+			})
+			localStorage.setItem('car', JSON.stringify(state.car))
+		},
+		changeSelectd(state, info) {
+			state.car.some(item => {
+				if (item.id == info.id) {
+					item.selectd = info.selectd
+				}
+			})
+			localStorage.setItem('car', JSON.stringify(state.car))
 		}
+
 	},
 	getters: { //通过this.$store.getters.***
 		getAllCount(state) { //获得商品添加到购物车的总数量
@@ -40,6 +68,33 @@ const store = new Vuex.Store({
 				c += item.count
 			})
 			return c
+		},
+		getProductCount(state) {
+			var o = {}
+			state.car.forEach(item => {
+				o[item.id] = item.count
+			})
+			return o
+		},
+		getProductSelectd(state) { //商品勾选状态
+			var o = {}
+			state.car.forEach(item => {
+				o[item.id] = item.selectd
+			})
+			return o
+		},
+		getProductAllMoney(state){ //总勾选量和总价
+			var o={
+				count:0, //勾选数量
+				amount:0 //勾选总价
+			}
+			state.car.forEach(item=>{
+				if(item.selectd){
+					o.count +=item.count
+					o.amount +=item.price	* item.count
+				}
+			})
+			return o
 		}
 	}
 })
