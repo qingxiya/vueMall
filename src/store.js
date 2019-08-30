@@ -5,7 +5,7 @@ import Vuex from 'vuex'
 Vue.use(Vuex)
 
 // 每次刚进入网站先从本地存储中将购物车的数据读取出来
-var car = JSON.parse(localStorage.getItem('car' || []))
+var car = JSON.parse(localStorage.getItem('car') || '[]')
 
 const store = new Vuex.Store({
 	state: { //通过this.$store.state.***
@@ -15,7 +15,6 @@ const store = new Vuex.Store({
 		addToCar(state, productInfo) {
 			//点击加入购物车，把商品保存到store中的car上
 			var flag = false
-
 			state.car.some(item => {
 				if (item.id === productInfo.id) {
 					item.count += parseInt(productInfo.count)
@@ -34,9 +33,9 @@ const store = new Vuex.Store({
 	getters: { //通过this.$store.getters.***
 		getAllCount(state) { //获得商品添加到购物车的总数量
 			var c = 0;
-			if(car===null){
-				return
-			}
+			// if(car===null){
+			// 	return c
+			// }
 			state.car.forEach(item => {
 				c += item.count
 			})
