@@ -1,7 +1,7 @@
 <template>
 	<div class="container-div">
 		<!-- 顶部header -->
-		<mt-header fixed title="子元素商城">
+		<mt-header fixed title="琳琅网">
 			<span @click="$router.go(-1)" slot="left" v-show="flag"><mt-button icon="back">返回</mt-button></span>
 		</mt-header>
 

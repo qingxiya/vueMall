@@ -34094,7 +34094,6 @@ exports.default = {
 			this.info = this.$refs.info.value;
 			this.$http.jsonp('http://tingapi.ting.baidu.com/v1/restserver/ting?method=baidu.ting.search.catalogSug&query=' + this.info).then(function (res) {
 				_this.info = res.body.song;
-				console.log(_this.info);
 			});
 		}
 	}
@@ -47770,7 +47769,7 @@ var render = function() {
     "div",
     { staticClass: "container-div" },
     [
-      _c("mt-header", { attrs: { fixed: "", title: "子元素商城" } }, [
+      _c("mt-header", { attrs: { fixed: "", title: "琳琅网" } }, [
         _c(
           "span",
           {
