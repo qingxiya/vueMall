@@ -25,6 +25,8 @@ import ProductComment from './components/product/productComment.vue'
 import Coupon from './components/users/coupon.vue'
 // 音乐专区
 import Music from './components/music/music.vue'
+// 音乐分类，榜单
+import MusicList from './components/music/MusicList.vue'
 // 音乐播放
 import MusicPlay from './components/music/musicPlay.vue'
 
@@ -52,7 +54,9 @@ var router = new VueRouter({
 	  // 优惠券
 	  {path:'/member/users/coupon',component:Coupon},
 	  // 音乐专区
-	  {path:'/home/music',component:Music},
+	  {path:'/home/music/:id',component:Music,name:"music"},
+	  // 音乐榜单
+	  {path:'/home/musicList',component:MusicList},
 	  // 音乐播放
 	  {path:'/home/musicPlay/:id',component:MusicPlay}
   ],

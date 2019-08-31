@@ -30,7 +30,7 @@
 				</a>
 			</li>
 			<li class="mui-table-view-cell mui-media mui-col-xs-4 mui-col-sm-3">
-				<router-link to="/home/music">
+				<router-link to="/home/musicList">
 					<img src="../../images/menu5.png" />
 					<div class="mui-media-body">音乐专区</div>
 				</router-link>

@@ -28,7 +28,6 @@ export default{
 				if(res.status===200){
 						this.playlist=res.body.bitrate
 						this.playinfo=res.body.songinfo
-						console.log(res.body)
 				}
 			})
 		}

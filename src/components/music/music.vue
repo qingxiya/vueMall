@@ -10,7 +10,6 @@
 		</router-link>
 		
 		<mt-button type="default" size="large" @click="more">加载更多</mt-button>
-		
 	</div>
 </template>
 
@@ -18,6 +17,8 @@
 	export default{
 		data(){
 			return{
+				// type:拿到榜单Id 根据不同的id查询不同榜单
+				type:this.$route.params.id,
 				list:[],
 				playlist:[],
 				offset:0
@@ -28,7 +29,7 @@
 		},
 		methods:{
 			getMusicList(){ //请求热门歌曲数据
-				this.$http.jsonp('http://tingapi.ting.baidu.com/v1/restserver/ting?method=baidu.ting.billboard.billList&type=2&size=10&offset='+this.offset).then(result=>{
+				this.$http.jsonp('http://tingapi.ting.baidu.com/v1/restserver/ting?method=baidu.ting.billboard.billList&type='+this.type+'&size=10&offset='+this.offset).then(result=>{
 					this.list=this.list.concat(result.body.song_list)
 				})
 			},
@@ -42,7 +43,7 @@
 
 <style scoped="scoped" lang="scss">
 	.music{
-		
+		margin-top: 10px;
 	}
 	.info{
 		text-align: center;

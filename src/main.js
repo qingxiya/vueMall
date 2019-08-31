@@ -53,6 +53,10 @@ import { CouponCell, CouponList } from 'vant';
 Vue.use(CouponCell).use(CouponList);
 import { Popup } from 'vant';
 Vue.use(Popup);
+import { Cell, CellGroup } from 'vant';
+Vue.use(Cell).use(CellGroup);
+import { Tag } from 'vant';
+Vue.use(Tag);
 
 
 // 导入格式化插件
