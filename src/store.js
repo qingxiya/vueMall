@@ -48,13 +48,16 @@ const store = new Vuex.Store({
 			})
 			localStorage.setItem('car', JSON.stringify(state.car))
 		},
-		changeSelectd(state, info) {
+		changeSelectd(state, info) { //设置商品勾选状态
 			state.car.some(item => {
 				if (item.id == info.id) {
 					item.selectd = info.selectd
 				}
 			})
 			localStorage.setItem('car', JSON.stringify(state.car))
+		},
+		delCar(state){//清空购物车
+			localStorage.removeItem('car')
 		}
 
 	},
